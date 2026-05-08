@@ -1,0 +1,4 @@
+dag,astar_nodes,greedy_nodes,astar_cost,greedy_cost,astar_sla,greedy_sla
+simple,5,5,8.0,8.0,100.0%,100.0%
+medium,10,77,13.0,13.0,100.0%,100.0%
+complex,1920,1223,23.0,23.0,75.0%,75.0%

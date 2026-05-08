@@ -1,0 +1,4 @@
+dag,tasks,csp_time_sec,csp_nodes,search_time_sec,search_nodes
+simple,5,0.0048,6,0.0001,6
+medium,10,0.0484,11,0.0006,11
+complex,20,0.1754,21,0.0344,733

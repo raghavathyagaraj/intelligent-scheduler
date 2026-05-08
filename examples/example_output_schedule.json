@@ -1,0 +1,45 @@
+{
+  "pipeline": "simple_etl_pipeline",
+  "mode": "normal",
+  "metrics": {
+    "makespan_minutes": 130.0,
+    "sla_adherence_percent": 100.0,
+    "tasks_completed": 5,
+    "tasks_failed": 0,
+    "tasks_total": 5,
+    "csp_nodes_explored": 6,
+    "csp_backtracks": 0
+  },
+  "schedule": [
+    {
+      "task_id": "report",
+      "resource_id": "server_1",
+      "start_time": 120.0,
+      "end_time": 130.0
+    },
+    {
+      "task_id": "load",
+      "resource_id": "server_1",
+      "start_time": 90.0,
+      "end_time": 110.0
+    },
+    {
+      "task_id": "transform",
+      "resource_id": "server_1",
+      "start_time": 45.0,
+      "end_time": 90.0
+    },
+    {
+      "task_id": "extract",
+      "resource_id": "server_1",
+      "start_time": 0.0,
+      "end_time": 30.0
+    },
+    {
+      "task_id": "validate",
+      "resource_id": "server_1",
+      "start_time": 30.0,
+      "end_time": 45.0
+    }
+  ]
+}

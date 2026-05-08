@@ -1,0 +1,4 @@
+dag,tasks,solved,violations,sla_adherence,nodes_explored,backtracks
+simple,5,True,0,100.0%,6,0
+medium,10,True,0,100.0%,11,0
+complex,20,True,0,100.0%,21,0

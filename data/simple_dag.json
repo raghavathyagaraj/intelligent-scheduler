@@ -1,0 +1,64 @@
+{
+  "name": "simple_etl_pipeline",
+  "tasks": [
+    {
+      "task_id": "extract",
+      "name": "Extract from source DB",
+      "duration_estimate": 30,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 5,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "validate",
+      "name": "Validate raw data quality",
+      "duration_estimate": 15,
+      "cpu_required": 1,
+      "memory_required": 2.0,
+      "priority": 5,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "transform",
+      "name": "Transform and clean data",
+      "duration_estimate": 45,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 7,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "load",
+      "name": "Load into data warehouse",
+      "duration_estimate": 20,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 8,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "report",
+      "name": "Generate daily report",
+      "duration_estimate": 10,
+      "cpu_required": 1,
+      "memory_required": 2.0,
+      "priority": 9,
+      "sla_deadline": 360
+    }
+  ],
+  "dependencies": [
+    {"upstream": "extract", "downstream": "validate"},
+    {"upstream": "validate", "downstream": "transform"},
+    {"upstream": "transform", "downstream": "load"},
+    {"upstream": "load", "downstream": "report"}
+  ],
+  "resources": [
+    {
+      "resource_id": "server_1",
+      "name": "Primary Server",
+      "cpu_capacity": 8,
+      "memory_capacity": 32.0
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "name": "enterprise_data_platform",
+  "tasks": [
+    {
+      "task_id": "ingest_transactions",
+      "name": "Ingest transaction logs",
+      "duration_estimate": 30,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 5,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "ingest_clickstream",
+      "name": "Ingest clickstream events",
+      "duration_estimate": 25,
+      "cpu_required": 4,
+      "memory_required": 16.0,
+      "priority": 5,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "ingest_crm",
+      "name": "Ingest CRM data",
+      "duration_estimate": 15,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 5,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "ingest_marketing",
+      "name": "Ingest marketing campaign data",
+      "duration_estimate": 10,
+      "cpu_required": 1,
+      "memory_required": 2.0,
+      "priority": 4,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "validate_transactions",
+      "name": "Validate transaction schema",
+      "duration_estimate": 15,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 6,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "validate_clickstream",
+      "name": "Validate clickstream schema",
+      "duration_estimate": 10,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 6,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "dedupe_transactions",
+      "name": "Deduplicate transactions",
+      "duration_estimate": 40,
+      "cpu_required": 6,
+      "memory_required": 16.0,
+      "priority": 7,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "sessionize_clicks",
+      "name": "Sessionize clickstream data",
+      "duration_estimate": 35,
+      "cpu_required": 6,
+      "memory_required": 16.0,
+      "priority": 7,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "enrich_crm",
+      "name": "Enrich CRM with external data",
+      "duration_estimate": 20,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 6,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "build_customer_360",
+      "name": "Build Customer 360 profile",
+      "duration_estimate": 45,
+      "cpu_required": 6,
+      "memory_required": 24.0,
+      "priority": 8,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "calc_ltv",
+      "name": "Calculate customer lifetime value",
+      "duration_estimate": 30,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 8,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "attribution_model",
+      "name": "Run marketing attribution model",
+      "duration_estimate": 25,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 7,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "funnel_analysis",
+      "name": "Calculate conversion funnels",
+      "duration_estimate": 20,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 7,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "revenue_aggregation",
+      "name": "Aggregate daily revenue",
+      "duration_estimate": 15,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 9,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "load_analytics_db",
+      "name": "Load to analytics database",
+      "duration_estimate": 20,
+      "cpu_required": 4,
+      "memory_required": 8.0,
+      "priority": 9,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "load_ml_features",
+      "name": "Load ML feature store",
+      "duration_estimate": 15,
+      "cpu_required": 2,
+      "memory_required": 8.0,
+      "priority": 8,
+      "sla_deadline": null
+    },
+    {
+      "task_id": "finance_report",
+      "name": "Generate finance report",
+      "duration_estimate": 10,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 10,
+      "sla_deadline": 360
+    },
+    {
+      "task_id": "marketing_report",
+      "name": "Generate marketing report",
+      "duration_estimate": 10,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 9,
+      "sla_deadline": 420
+    },
+    {
+      "task_id": "exec_dashboard",
+      "name": "Refresh executive dashboard",
+      "duration_estimate": 10,
+      "cpu_required": 2,
+      "memory_required": 4.0,
+      "priority": 10,
+      "sla_deadline": 390
+    },
+    {
+      "task_id": "data_quality_report",
+      "name": "Generate data quality scorecard",
+      "duration_estimate": 10,
+      "cpu_required": 1,
+      "memory_required": 2.0,
+      "priority": 6,
+      "sla_deadline": 420
+    }
+  ],
+  "dependencies": [
+    {"upstream": "ingest_transactions", "downstream": "validate_transactions"},
+    {"upstream": "ingest_clickstream", "downstream": "validate_clickstream"},
+    {"upstream": "ingest_crm", "downstream": "enrich_crm"},
+    {"upstream": "validate_transactions", "downstream": "dedupe_transactions"},
+    {"upstream": "validate_clickstream", "downstream": "sessionize_clicks"},
+    {"upstream": "dedupe_transactions", "downstream": "build_customer_360"},
+    {"upstream": "enrich_crm", "downstream": "build_customer_360"},
+    {"upstream": "sessionize_clicks", "downstream": "build_customer_360"},
+    {"upstream": "sessionize_clicks", "downstream": "funnel_analysis"},
+    {"upstream": "build_customer_360", "downstream": "calc_ltv"},
+    {"upstream": "build_customer_360", "downstream": "revenue_aggregation"},
+    {"upstream": "ingest_marketing", "downstream": "attribution_model"},
+    {"upstream": "sessionize_clicks", "downstream": "attribution_model"},
+    {"upstream": "calc_ltv", "downstream": "load_analytics_db"},
+    {"upstream": "revenue_aggregation", "downstream": "load_analytics_db"},
+    {"upstream": "funnel_analysis", "downstream": "load_analytics_db"},
+    {"upstream": "attribution_model", "downstream": "load_analytics_db"},
+    {"upstream": "build_customer_360", "downstream": "load_ml_features"},
+    {"upstream": "load_analytics_db", "downstream": "finance_report"},
+    {"upstream": "load_analytics_db", "downstream": "marketing_report"},
+    {"upstream": "load_analytics_db", "downstream": "exec_dashboard"},
+    {"upstream": "validate_transactions", "downstream": "data_quality_report"},
+    {"upstream": "validate_clickstream", "downstream": "data_quality_report"}
+  ],
+  "resources": [
+    {
+      "resource_id": "spark_cluster_1",
+      "name": "Spark Cluster Primary",
+      "cpu_capacity": 16,
+      "memory_capacity": 64.0
+    },
+    {
+      "resource_id": "spark_cluster_2",
+      "name": "Spark Cluster Secondary",
+      "cpu_capacity": 8,
+      "memory_capacity": 32.0
+    },
+    {
+      "resource_id": "general_server",
+      "name": "General Purpose Server",
+      "cpu_capacity": 4,
+      "memory_capacity": 16.0
+    }
+  ]
+}

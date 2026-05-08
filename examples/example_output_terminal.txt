@@ -1,0 +1,34 @@
+============================================================
+AGENT RUN — Iteration 1 (mode=normal)
+============================================================
+
+[STEP 1] Building Knowledge Base...
+  Derived 4 facts via forward chaining
+  Ready tasks: ['extract']
+
+[STEP 2] Solving CSP for initial schedule...
+  ✓ Schedule found: Solution found. Explored 6 nodes, 0 backtracks.
+  Makespan: 130m
+
+[STEP 3] Simulating execution (mode=normal)...
+  Completed: 5 tasks
+
+[STEP 4] No failures — skipping re-plan.
+
+[STEP 5] Recording runtimes for learning...
+  extract: actual=30.0m, old_est=30.0m → new_est=30.0m
+  validate: actual=15.0m, old_est=15.0m → new_est=15.0m
+  transform: actual=45.0m, old_est=45.0m → new_est=45.0m
+  load: actual=20.0m, old_est=20.0m → new_est=20.0m
+  report: actual=10.0m, old_est=10.0m → new_est=10.0m
+
+Agent Metrics:
+  Makespan: 130 minutes
+  SLA adherence: 100.0%
+  Tasks: 5/5 completed, 0 failed
+  CSP: 6 nodes, 0 backtracks
+  Re-plans: 0
+  Search nodes (total): 0
+  Learning MAE: 0.00 minutes
+============================================================
+

@@ -1,0 +1,4 @@
+dag,agent_makespan,baseline_makespan,agent_sla,baseline_sla,agent_completed,baseline_completed
+simple,130,120,100.0%,100.0%,5,5
+medium,175,145,100.0%,100.0%,10,10
+complex,205,190,100.0%,100.0%,20,20
