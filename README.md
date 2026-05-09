@@ -1,5 +1,8 @@
 # Intelligent Data Pipeline Scheduler
 
+## 🎥 Demo
+[▶ Watch Demo Video](https://github.com/raghavathyagaraj/intelligent-scheduler/releases/tag/vq)
+
 An AI agent that intelligently schedules data pipeline tasks across limited compute resources using search, knowledge representation, constraint satisfaction, and learning.
 
 ## Team Members
